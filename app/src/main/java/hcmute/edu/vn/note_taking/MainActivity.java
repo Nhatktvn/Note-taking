@@ -13,7 +13,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-//        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView forgotPassTextView = findViewById(R.id.forgotPasswordTextView);
-//        forgotPassTextView.setPaintFlags(forgotPassTextView.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
     }
 }

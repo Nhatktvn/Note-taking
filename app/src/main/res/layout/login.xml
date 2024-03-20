@@ -10,10 +10,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            style="@style/Widget.AppCompat.Button"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="54dp"
+                android:layout_height="40dp"
+                android:background="@drawable/about_us_icon"
+                android:gravity="center"
+                android:layout_gravity="">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/baseline_info_outline_24" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="54dp"
+            android:layout_height="40dp"
+            android:layout_gravity=""
+            android:background="@drawable/about_us_icon"
+            android:gravity="center"
+            android:scaleX="-1">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/call_center_operator" />
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,21 +102,21 @@
                     android:inputType="textPassword"
                     android:layout_marginTop="20dp"/>
                 <TextView
-
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:id="@+id/forgotPasswordTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:text="Forgot your password?"
                     android:layout_marginHorizontal="20dp"
                     android:clickable="true"
                     android:layout_gravity="end"
+                    android:gravity="center"
                     android:textSize="16dp"
                     android:textStyle="italic"
 
                     />
                 <LinearLayout
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -99,6 +125,7 @@
                     >
 
                     <Button
+                        android:id="@+id/btnRegister"
                         style="@style/Widget.Material3.Button"
                         android:layout_width="120dp"
                         android:layout_height="50dp"
@@ -108,6 +135,7 @@
                         android:textSize="16dp"
                         android:backgroundTint="#FFA800"
                         android:textColor="@color/black"
+                        android:onClick="onClick"
                         app:cornerRadius="10dp" />
 
                     <Button
