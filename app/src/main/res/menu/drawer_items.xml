@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+   <item
+       android:id="@+id/navSetting"
+       android:title="Setting"
+       />
+   <item
+      android:id="@+id/navCloudStatus"
+      android:title="Cloud status"
+       />
+   <item
+       android:id="@+id/navRecycleBin"
+       android:title="Recycle Bin"
+       />
+   <item
+       android:id="@+id/navDirectories"
+       android:title="Directories"
+       />
+   <item
+       android:id="@+id/navLogOut"
+       android:title="Log out"
+       />
+</menu>

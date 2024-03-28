@@ -13,8 +13,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
     }
-        public void onClick(View v) {
-            Intent intentRegister = new Intent(Login.this, Register.class);
-            startActivity(intentRegister);
-        }
+    public void onClickToRegister(View v) {
+        Intent intentRegister = new Intent(this, Register.class);
+        startActivity(intentRegister);
+    }
 }

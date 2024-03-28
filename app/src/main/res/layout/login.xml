@@ -135,7 +135,7 @@
                         android:textSize="16dp"
                         android:backgroundTint="#FFA800"
                         android:textColor="@color/black"
-                        android:onClick="onClick"
+                        android:onClick="onClickToRegister"
                         app:cornerRadius="10dp" />
 
                     <Button
