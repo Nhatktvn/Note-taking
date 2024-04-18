@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
    <item
        android:id="@+id/navSetting"
-       android:title="Setting"
-       />
+       android:menuCategory="container"
+       android:title="Setting" />
    <item
       android:id="@+id/navCloudStatus"
       android:title="Cloud status"
