@@ -54,6 +54,6 @@
             </LinearLayout>
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
-
+    <include layout="@layout/content_main" />
 
 </LinearLayout>

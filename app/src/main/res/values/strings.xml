@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Note-taking</string>
 	<string name="resend_otp_code">Resend OTP code</string>
+    <string name="menu_home">Home</string>
 </resources>
