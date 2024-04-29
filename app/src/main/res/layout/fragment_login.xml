@@ -1,56 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:orientation="vertical"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
-	
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-		
-		<LinearLayout
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_weight="1">
-			
-			<LinearLayout
-				android:layout_width="54dp"
-				android:layout_height="40dp"
-				android:background="@drawable/about_us_icon"
-				android:gravity="center"
-				android:layout_gravity="">
-				
-				<ImageView
-					android:layout_width="20dp"
-					android:layout_height="20dp"
-					android:src="@drawable/baseline_info_outline_24" />
-			</LinearLayout>
-		
-		</LinearLayout>
-		
-		<LinearLayout
-			android:layout_width="54dp"
-			android:layout_height="40dp"
-			android:layout_gravity=""
-			android:background="@drawable/about_us_icon"
-			android:gravity="center"
-			android:scaleX="-1">
-			
-			<ImageView
-				android:layout_width="20dp"
-				android:layout_height="20dp"
-				android:src="@drawable/call_center_operator" />
-		</LinearLayout>
-	</LinearLayout>
+	android:layout_height="wrap_content"
+	tools:context=".ui.login.LoginFragment">
 	
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:orientation="vertical"
 		android:layout_weight="1"
-		android:gravity="center">
+		android:gravity="center"
+		android:orientation="vertical">
 		
 		<LinearLayout
 			android:layout_width="wrap_content"
@@ -72,16 +33,16 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
-			android:gravity="center"
 			android:layout_marginTop="20dp"
+			android:gravity="center"
 			android:orientation="vertical">
 			
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Reset password"
-				android:textStyle="bold"
-				android:textSize="30dp" />
+				android:text="Login"
+				android:textSize="30dp"
+				android:textStyle="bold" />
 			
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -97,68 +58,74 @@
 					android:background="@drawable/rounded_button_background"
 					android:backgroundTint="#FFEC85"
 					android:hint="Your email..."
-					android:paddingHorizontal="15dp"
-					android:text="vkq0919309031@gmail.com" />
+					android:text="vkq265@gmail.com"
+					android:paddingHorizontal="15dp" />
 				
 				<EditText
-					android:id="@+id/et_new_password"
+					android:id="@+id/et_password"
 					android:layout_width="match_parent"
 					android:layout_height="55dp"
 					android:layout_marginHorizontal="20dp"
 					android:layout_marginTop="20dp"
 					android:background="@drawable/rounded_button_background"
 					android:backgroundTint="#FFEC85"
-					android:hint="Your new password..."
-					android:paddingHorizontal="15dp"
-					android:text="quoc123" />
+					
+					android:hint="Password..."
+					android:inputType="textPassword"
+					android:text="123"
+					android:paddingHorizontal="15dp" />
 				
 				<TextView
-					
-					android:id="@+id/tv_back_to_login"
+					android:id="@+id/tv_forget_password"
 					android:layout_width="wrap_content"
 					android:layout_height="48dp"
 					android:layout_gravity="end"
 					android:layout_marginHorizontal="20dp"
 					android:layout_marginTop="20dp"
-					android:allowUndo="false"
 					android:clickable="true"
 					android:gravity="center"
-					android:text="Go back to login?"
-					
+					android:text="Forgot your password?"
 					android:textSize="16dp"
-					android:textStyle="italic" />
+					android:textStyle="italic"
+					
+					/>
 				
 				<LinearLayout
-					android:layout_marginTop="40dp"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:orientation="horizontal"
+					android:layout_marginTop="40dp"
 					android:gravity="center"
+					android:orientation="horizontal"
 					
 					>
 					
 					<Button
-						android:id="@+id/btn_submit_reset"
+						android:id="@+id/btn_register"
 						style="@style/Widget.Material3.Button"
-						android:layout_width="wrap_content"
+						android:layout_width="120dp"
 						android:layout_height="50dp"
 						android:layout_gravity="start"
+						android:layout_marginRight="30dp"
 						android:backgroundTint="#FFA800"
-						android:text="Receive your OTP code"
+						android:text="Register"
 						android:textColor="@color/black"
 						android:textSize="16dp"
 						app:cornerRadius="10dp" />
-				
+					
+					<Button
+						android:id="@+id/btn_login"
+						style="@style/Widget.Material3.Button"
+						android:layout_width="120dp"
+						android:layout_height="50dp"
+						android:layout_gravity="end"
+						android:backgroundTint="#FFA800"
+						android:text="Login"
+						android:textColor="@color/black"
+						android:textSize="16dp"
+						app:cornerRadius="10dp" />
 				</LinearLayout>
 			</LinearLayout>
 		</LinearLayout>
 	</LinearLayout>
-	
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:gravity="center|bottom"
-		android:text="Version 1.0"
-		
-		android:paddingBottom="3dp" />
-</LinearLayout>
+
+</FrameLayout>

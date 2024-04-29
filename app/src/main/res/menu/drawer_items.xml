@@ -3,7 +3,11 @@
    <item
        android:id="@+id/nav_home"
        android:menuCategory="container"
-       android:title="Setting" />
+       android:title="Home" />
+   <item
+       android:id="@+id/nav_view_note"
+       android:menuCategory="container"
+       android:title="Note" />
    <item
        android:id="@+id/navSetting"
        android:menuCategory="container"
