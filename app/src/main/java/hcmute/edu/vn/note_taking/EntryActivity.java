@@ -9,10 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricPrompt;
 
-import hcmute.edu.vn.note_taking.controller.HomeActivity;
-import hcmute.edu.vn.note_taking.controller.LoginActivity;
+import hcmute.edu.vn.note_taking.activities.MainActivity;
+import hcmute.edu.vn.note_taking.activities.LoginActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class EntryActivity extends AppCompatActivity {
 
     SharedPreferences userSharedPreferences;
     SharedPreferences settingsSharedPreferences;
@@ -38,25 +38,25 @@ public class MainActivity extends AppCompatActivity {
                         public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                             super.onAuthenticationSucceeded(result);
                             Log.i("Biometric", "BIOMETRIC Authentication Succeeded" + result);
-                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                            Intent intent = new Intent(EntryActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
 
                         @Override
                         public void onAuthenticationFailed() {
                             super.onAuthenticationFailed();
-                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(EntryActivity.this, LoginActivity.class);
                             startActivity(intent);
                         }
                     });
                     biometricPrompt.authenticate(promptInfo);
                 }
             } else {
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                Intent intent = new Intent(EntryActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         } else {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            Intent intent = new Intent(EntryActivity.this, LoginActivity.class);
             startActivity(intent);
         }
     }

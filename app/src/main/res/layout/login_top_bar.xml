@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+	
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1">
+		
+		<LinearLayout
+			android:id="@+id/rl_ic_about_us"
+			android:layout_width="54dp"
+			android:layout_height="40dp"
+			android:layout_gravity=""
+			android:background="@drawable/about_us_icon"
+			android:gravity="center">
+			
+			<ImageView
+				android:layout_width="20dp"
+				android:layout_height="20dp"
+				android:src="@drawable/baseline_info_outline_24" />
+		</LinearLayout>
+	
+	</LinearLayout>
+	
+	<LinearLayout
+		android:id="@+id/rl_ic_contact_us"
+		android:layout_width="54dp"
+		android:layout_height="40dp"
+		android:layout_gravity=""
+		android:background="@drawable/about_us_icon"
+		android:gravity="center"
+		android:scaleX="-1">
+		
+		<ImageView
+			android:layout_width="20dp"
+			android:layout_height="20dp"
+			android:src="@drawable/call_center_operator" />
+	</LinearLayout>
+</LinearLayout>

@@ -1,133 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints"
-        >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:background="@drawable/edit_text_shadow_border_radius"
-                android:gravity="start"
-                android:hint="Write something you want to note..."
-                android:inputType="textMultiLine"
-                android:padding="10dp"
-                android:scrollbars="vertical" />
-
-            <Button
-                android:id="@+id/button"
-                style="@style/Widget.Material3.Button.TonalButton"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_alignEnd="@id/editText"
-                android:layout_alignBottom="@id/editText"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
-                android:backgroundTint="#A7EFFF"
-                android:padding="0dp"
-                android:paddingHorizontal="100dp"
-                android:text="Choose title"
-                android:textColor="@color/black"
-                android:textSize="12dp" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Wanna voice your current expression? It will disappear times by times"
-                android:textSize="13dp" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginVertical="20dp">
-                <Button
-                    style="@style/Widget.Material3.Button"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:backgroundTint="#E05048"
-                    app:cornerRadius="50dp">
-
-                </Button>
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:padding="7dp"
-                    android:src="@drawable/baseline_mic_24"
-                    app:tint="#FFFFFF" />
-            </RelativeLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Note your image/video:"
-                android:layout_marginBottom="10dp"
-                />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#D9D9D9"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:background="#93C1D0"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"/>
-                <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:background="#93C1D0"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"/>
-                <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:background="#93C1D0"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"/>
-                <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:background="#93C1D0"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"/>
-                <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:background="#93C1D0"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"/>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="10dp"
+		android:orientation="vertical"
+		tools:ignore="MissingConstraints">
+		
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+			
+			<EditText
+				android:id="@+id/editText"
+				android:layout_width="match_parent"
+				android:layout_height="160dp"
+				android:background="@drawable/edit_text_shadow_border_radius"
+				android:gravity="start"
+				android:hint="Write something you want to note..."
+				android:inputType="textMultiLine"
+				android:padding="10dp"
+				android:scrollbars="vertical" />
+			
+			<Button
+				android:id="@+id/button"
+				style="@style/Widget.Material3.Button.TonalButton"
+				android:layout_width="wrap_content"
+				android:layout_height="35dp"
+				android:layout_alignEnd="@id/editText"
+				android:layout_alignBottom="@id/editText"
+				android:layout_marginRight="10dp"
+				android:layout_marginBottom="5dp"
+				android:backgroundTint="#A7EFFF"
+				android:padding="0dp"
+				android:paddingHorizontal="100dp"
+				android:text="Choose title"
+				android:textColor="@color/black"
+				android:textSize="12dp" />
+		</RelativeLayout>
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="20dp"
+			android:orientation="vertical">
+			
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Wanna voice your current expression? It will disappear times by times"
+				android:textSize="13dp" />
+			
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:layout_marginVertical="20dp">
+				
+				<Button
+					style="@style/Widget.Material3.Button"
+					android:layout_width="60dp"
+					android:layout_height="60dp"
+					android:backgroundTint="#E05048"
+					app:cornerRadius="50dp">
+				
+				</Button>
+				
+				<ImageView
+					android:layout_width="60dp"
+					android:layout_height="60dp"
+					android:padding="7dp"
+					android:src="@drawable/baseline_mic_24"
+					app:tint="#FFFFFF" />
+			</RelativeLayout>
+		</LinearLayout>
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+			
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Note your image/video:"
+				android:layout_marginBottom="10dp" />
+			
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="#D9D9D9"
+				android:paddingTop="10dp"
+				android:paddingBottom="10dp">
+				
+				<ImageView
+					android:id="@+id/iv_browse_gallery"
+					android:layout_width="65dp"
+					android:layout_height="65dp"
+					android:background="#93C1D0"
+					app:layout_constraintLeft_toLeftOf="parent"
+					app:layout_constraintRight_toLeftOf="@+id/iv_take_new_photo"
+					app:layout_constraintTop_toTopOf="parent"
+					app:srcCompat="@drawable/browse_gallery" />
+				
+				<ImageView
+					android:id="@+id/iv_take_new_photo"
+					android:layout_width="65dp"
+					android:layout_height="65dp"
+					android:background="#93C1D0"
+					app:srcCompat="@drawable/take_new_photo"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toEndOf="@+id/iv_browse_gallery"
+					app:layout_constraintTop_toTopOf="parent" />
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</LinearLayout>
+	</LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

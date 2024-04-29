@@ -1,71 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	android:orientation="vertical"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
-	
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
-		
-		<LinearLayout
-			android:layout_width="wrap_content"
-			android:layout_height="match_parent"
-			android:layout_weight="1">
-			
-			<LinearLayout
-				android:layout_width="54dp"
-				android:layout_height="40dp"
-				android:layout_gravity=""
-				android:background="@drawable/about_us_icon"
-				android:gravity="center">
-				
-				<ImageView
-					android:layout_width="20dp"
-					android:layout_height="20dp"
-					android:src="@drawable/baseline_info_outline_24" />
-			</LinearLayout>
-		
-		</LinearLayout>
-		
-		<LinearLayout
-			android:layout_width="54dp"
-			android:layout_height="40dp"
-			android:layout_gravity=""
-			android:background="@drawable/about_us_icon"
-			android:gravity="center"
-			android:scaleX="-1">
-			
-			<ImageView
-				android:layout_width="20dp"
-				android:layout_height="20dp"
-				android:src="@drawable/call_center_operator" />
-		</LinearLayout>
-	</LinearLayout>
+	android:layout_height="wrap_content"
+	tools:context=".ui.login.RegisterFragment">
 	
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:orientation="vertical"
 		android:layout_weight="1"
-		android:gravity="center">
+		android:gravity="center"
+		android:orientation="vertical">
 		
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
-			android:gravity="center"
 			android:layout_marginTop="20dp"
+			android:gravity="center"
 			android:orientation="vertical">
 			
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:textStyle="bold"
 				android:text="Register"
-				android:textSize="30dp" />
+				android:textSize="30dp"
+				android:textStyle="bold" />
 			
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -105,9 +66,9 @@
 					android:background="@drawable/rounded_button_background"
 					android:backgroundTint="#FFEC85"
 					android:hint="Password..."
+					android:inputType="textWebPassword"
 					android:paddingHorizontal="15dp"
-					android:text="123"
-					android:inputType="textWebPassword" />
+					android:text="123" />
 				
 				<EditText
 					android:id="@+id/et_confirm_password"
@@ -118,56 +79,48 @@
 					android:background="@drawable/rounded_button_background"
 					android:backgroundTint="#FFEC85"
 					android:hint="Repeat password..."
-					android:paddingHorizontal="15dp"
 					android:inputType="textWebPassword"
+					android:paddingHorizontal="15dp"
 					android:text="123" />
 				
 				<TextView
 					
-					android:layout_marginTop="20dp"
 					android:id="@+id/tv_back_to_login"
 					android:layout_width="wrap_content"
 					android:layout_height="48dp"
-					android:text="Go back to login?"
-					android:gravity="center"
-					android:layout_marginHorizontal="20dp"
-					android:clickable="true"
 					android:layout_gravity="end"
+					android:layout_marginHorizontal="20dp"
+					android:layout_marginTop="20dp"
+					android:clickable="true"
+					android:gravity="center"
+					android:text="Go back to login?"
 					android:textSize="16dp"
 					android:textStyle="italic"
 					
 					/>
 				
 				<LinearLayout
-					android:layout_marginTop="40dp"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:orientation="horizontal"
+					android:layout_marginTop="40dp"
 					android:gravity="center"
+					android:orientation="horizontal"
 					
 					>
 					
 					<Button
 						android:id="@+id/btn_submit_regist"
 						style="@style/Widget.Material3.Button"
+						app:cornerRadius="10dp"
 						android:layout_width="wrap_content"
 						android:layout_height="50dp"
 						android:layout_gravity="start"
 						android:backgroundTint="#FFA800"
 						android:text="Register"
 						android:textColor="@color/black"
-						android:textSize="16dp"
-						app:cornerRadius="10dp" />
+						android:textSize="16dp" />
 				</LinearLayout>
 			</LinearLayout>
 		</LinearLayout>
 	</LinearLayout>
-	
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:gravity="center|bottom"
-		android:text="Version 1.0"
-		
-		android:paddingBottom="3dp" />
-</LinearLayout>
+</FrameLayout>
