@@ -41,7 +41,7 @@
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Enter OTP code"
+				android:text="@string/enter_OTP_code"
 				android:textSize="30dp"
 				android:textStyle="bold" />
 			
@@ -58,7 +58,7 @@
 					android:layout_marginTop="20dp"
 					android:background="@drawable/rounded_button_background"
 					android:backgroundTint="#FFEC85"
-					android:hint="The OTP code sent to your phone"
+					android:hint="@string/confirm_otp_hint_content"
 					android:paddingHorizontal="15dp" />
 				
 				<LinearLayout
@@ -92,7 +92,7 @@
 					android:layout_marginTop="20dp"
 					android:clickable="true"
 					android:gravity="center"
-					android:text="Go back to login?"
+					android:text="@string/back_to_login"
 					android:textSize="16dp"
 					android:textStyle="italic"
 					
@@ -115,7 +115,7 @@
 						android:layout_height="50dp"
 						android:layout_gravity="start"
 						android:backgroundTint="#FFA800"
-						android:text="Confirm OTP"
+						android:text="@string/confirm_OTP_btn"
 						android:textColor="@color/black"
 						android:textSize="16dp" />
 				</LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Note-taking</string>
+    <string name="resend_otp_code">Gửi lại mã</string>
+    <string name="menu_home">Home</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Tiêu đề</string>
+    <string name="hint_new_note_title">Ghi chú của bạn và chọn tiêu đề</string>
+    <string name="image">"Hình ảnh: "</string>
+    <string name="add">Thêm</string>
+    <string name="note_content">Nội dung ghi chú:</string>
+    <string name="hint_note_content">Viết ghi chú của bạn ở đây</string>
+    <string name="save">Lưu</string>
+    <string name="cancel">Hủy</string>
+    <string name="confirm_exit">Bạn có chắc bạn muốn thoát?</string>
+    <string name="yes">Đồng ý</string>
+    <string name="no">Không</string>
+    <string name="username">"Tài khoản: "</string>
+    <string name="phone">"Số điện thoại: "</string>
+    <string name="status">"Trạng thái : "</string>
+    <string name="reset_pass">Đặt lại mật khẩu</string>
+    <string name="back_to_login">Quay lại Đăng nhập</string>
+    <string name="receive_OTP_code">Nhận mã OTP của bạn</string>
+    <string name="hint_home_content_note">Viết điều gì đó bạn muốn lưu ý...</string>
+    <string name="choose_title">Chọn tiêu đề</string>
+    <string name="txt_home_voice">
+Muốn nói lên biểu hiện hiện tại của bạn? Nó sẽ biến mất theo thời gian</string>
+    <string name="home_title_image_video">Note your image/video:</string>
+    <string name="title_login">Login</string>
+    <string name="forgot_password">Quên mật khẩu</string>
+    <string name="register">Đăng kí</string>
+    <string name="conent_login">Đăng nhập</string>
+    <string name="enter_OTP_code">Nhập mã OTP</string>
+    <string name="confirm_otp_hint_content">
+Mã OTP được gửi tới điện thoại của bạn</string>
+    <string name="confirm_OTP_btn">Xác nhận OTP</string>
+    <string name="title_register">Đăng kí</string>
+</resources>

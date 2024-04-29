@@ -10,7 +10,7 @@
 		android:id="@+id/tv_exit_message"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="Are you sure you want to exit?"
+		android:text="@string/confirm_exit"
 		android:textSize="16sp" />
 	
 	<androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +23,7 @@
 			android:id="@+id/btn_yes"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="Yes"
+			android:text="@string/yes"
 			app:layout_constraintEnd_toStartOf="@+id/btn_no"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +32,7 @@
 			android:id="@+id/btn_no"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="No"
+			android:text="@string/no"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toEndOf="@+id/btn_yes"
 			app:layout_constraintTop_toTopOf="parent" />

@@ -42,7 +42,6 @@
                         android:layout_gravity=""
                         android:background="@drawable/about_us_icon"
                         android:gravity="center">
-
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
