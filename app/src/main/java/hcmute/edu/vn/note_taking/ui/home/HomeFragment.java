@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -47,6 +49,9 @@ public class HomeFragment extends Fragment {
     ImageView btnRecord;
 
     MediaRecorder mediaRecorder;
+    EditText editTextContent;
+
+    Button buttonSubmitTextNote;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,6 +70,7 @@ public class HomeFragment extends Fragment {
 
                         Intent intent = new Intent(requireActivity(), CreateNoteActivity.class);
                         intent.putExtra("listImages", listImages);
+                        intent.putExtra("text_content", editTextContent.getText().toString());
                         startActivity(intent);
                     } else {
                         Log.d("PhotoPicker", "No media selected");
@@ -84,7 +90,8 @@ public class HomeFragment extends Fragment {
         ll_recording = root.findViewById(R.id.ll_recording);
         btnRecord = root.findViewById(R.id.btn_record);
         btnStopRecording = root.findViewById(R.id.btnStopRecording);
-
+        editTextContent = root.findViewById(R.id.editTextContent);
+        buttonSubmitTextNote = root.findViewById(R.id.buttonSubmitTextNote);
 
         if (iv_browse_gallery != null) {
             iv_browse_gallery.setOnClickListener(v -> {
@@ -105,6 +112,11 @@ public class HomeFragment extends Fragment {
 
         iv_take_new_photo.setOnClickListener(v -> {
             Intent intent = new Intent(requireActivity(), CameraActivity.class);
+            startActivity(intent);
+        });
+        buttonSubmitTextNote.setOnClickListener(v -> {
+            Intent intent = new Intent(requireActivity(), CreateNoteActivity.class);
+            intent.putExtra("text_content", editTextContent.getText().toString());
             startActivity(intent);
         });
 
@@ -138,6 +150,7 @@ public class HomeFragment extends Fragment {
             btnRecord.setVisibility(View.VISIBLE);
 
             Intent intent = new Intent(requireActivity(), CreateNoteActivity.class);
+            intent.putExtra("text_content", editTextContent.getText().toString());
             intent.putExtra("recordingPath", filePath.get());
             startActivity(intent);
         });

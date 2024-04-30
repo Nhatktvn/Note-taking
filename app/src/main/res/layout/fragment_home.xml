@@ -17,7 +17,7 @@
 			android:layout_height="wrap_content">
 			
 			<EditText
-				android:id="@+id/editText"
+				android:id="@+id/editTextContent"
 				android:layout_width="match_parent"
 				android:layout_height="160dp"
 				android:background="@drawable/edit_text_shadow_border_radius"
@@ -28,12 +28,12 @@
 				android:scrollbars="vertical" />
 			
 			<Button
-				android:id="@+id/button"
+				android:id="@+id/buttonSubmitTextNote"
 				style="@style/Widget.Material3.Button.TonalButton"
 				android:layout_width="wrap_content"
 				android:layout_height="35dp"
-				android:layout_alignEnd="@id/editText"
-				android:layout_alignBottom="@id/editText"
+				android:layout_alignEnd="@id/editTextContent"
+				android:layout_alignBottom="@id/editTextContent"
 				android:layout_marginRight="10dp"
 				android:layout_marginBottom="5dp"
 				android:backgroundTint="#A7EFFF"
