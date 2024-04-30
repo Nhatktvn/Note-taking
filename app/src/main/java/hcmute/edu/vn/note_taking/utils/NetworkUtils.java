@@ -3,6 +3,7 @@ package hcmute.edu.vn.note_taking.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -175,6 +176,18 @@ public class NetworkUtils {
                 }
             }
             params.put("list_image", new JSONArray(uploadedImageArray).toString());
+
+            String encoded_voice = AudioUtils.encodeAndSaveAudio(context, Uri.parse(newLocalNote.getVoice()));
+
+            JSONObject response = uploadFile(context, encoded_voice, Constants.getHOST() + "/api/upload");
+            String voice_url = null;
+            if (response.getString("status").equals("failed")) {
+                return null;
+            } else {
+                voice_url = response.getString("url");
+            }
+
+            params.put("voice", voice_url);
             params.put("created_at", newLocalNote.getCreated_at());
             params.put("status", String.valueOf(newLocalNote.getStatus()));
             params.put("local_id", String.valueOf(newLocalNote.getId()));

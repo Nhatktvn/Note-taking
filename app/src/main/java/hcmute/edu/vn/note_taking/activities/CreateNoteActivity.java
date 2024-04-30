@@ -1,5 +1,8 @@
 package hcmute.edu.vn.note_taking.activities;
 
+import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -9,11 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputEditText;
@@ -38,6 +43,7 @@ import hcmute.edu.vn.note_taking.utils.PermissionUtils;
 public class CreateNoteActivity extends AppCompatActivity {
 
     LinearLayout llImages;
+    LinearLayout llVoice;
     Map<Integer, String> mapImages = new HashMap<>();
 
     Button btnSave;
@@ -47,25 +53,45 @@ public class CreateNoteActivity extends AppCompatActivity {
     TextInputEditText etTitle;
     TextInputEditText etTextContent;
 
+    MediaPlayer mediaPlayer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_note);
 
         llImages = findViewById(R.id.llImages);
+        llVoice = findViewById(R.id.llVoice);
         etTitle = findViewById(R.id.etTitle);
         etTextContent = findViewById(R.id.etTextContent);
 
+
+        String voicePath;
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             String text_content = bundle.getString("text_content");
+            if (text_content != null) {
+                etTextContent.setText(text_content);
+            }
             String[] listImages = bundle.getStringArray("listImages");
             addImagesToView(listImages);
+            String voice = bundle.getString("recordingPath");
+            if (voice != null) {
+                addVoiceToView(voice);
+                voicePath = voice;
+            } else {
+                voicePath = null;
+            }
+        } else {
+            voicePath = null;
         }
+
 
         btnSave = findViewById(R.id.btnSave);
         btnCancel = findViewById(R.id.btnCancel);
         btnAddImage = findViewById(R.id.btnAddImage);
+        mediaPlayer = new MediaPlayer();
 
         pickMultipleMedia =
                 registerForActivityResult(new ActivityResultContracts.PickMultipleVisualMedia(5), uris -> {
@@ -121,7 +147,7 @@ public class CreateNoteActivity extends AppCompatActivity {
                     }
                     String final_list_images = new JSONArray(list_encoded_images).toString();
 
-                    Note newLocalNote = noteTakingOpenHelper.insertNote(final_title, final_text_content, final_list_images, null);
+                    Note newLocalNote = noteTakingOpenHelper.insertNote(final_title, final_text_content, final_list_images, voicePath);
                     if (NetworkUtils.isConnectedToInternet(getApplicationContext())) {
                         String email = getSharedPreferences(Constants.USER_SHARED_PREFERENCES, MODE_PRIVATE).getString("email", "");
                         JSONObject result = NetworkUtils.sendNoteToServer(getApplicationContext(), newLocalNote, email);
@@ -135,61 +161,98 @@ public class CreateNoteActivity extends AppCompatActivity {
                                 Log.e("CreateNoteActivity", e.getMessage());
                             }
                         }
+                    } else {
+                        SharedPreferences sharedPreferences = getSharedPreferences(Constants.SYNC_SHARED_PREFERENCES, MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        String syncData = sharedPreferences.getString("syncData", "");
+                        editor.remove("syncData");
+                        editor.apply();
+                        if (syncData.equals("")) {
+                            editor.putString("syncData", "" + newLocalNote.getId());
+                        } else {
+                            editor.putString("syncData", syncData + "," + newLocalNote.getId());
+                        }
+                        editor.apply();
                     }
+
                     finish();
                 }).start();
             }
         });
     }
 
+    private void addVoiceToView(String filePath) {
+        ConstraintLayout voice_card = (ConstraintLayout) getLayoutInflater().inflate(R.layout.voice_card, null);
+        voice_card.setId(View.generateViewId());
+        mediaPlayer = new MediaPlayer();
+
+        try {
+            mediaPlayer.setDataSource(filePath);
+            mediaPlayer.prepare();
+            TextView durationTextView = voice_card.findViewById(R.id.durationTextView);
+            durationTextView.setId(View.generateViewId());
+//            durationTextView.setText(mediaPlayer.getDuration() / 1000 + ":" + mediaPlayer.getDuration() % 1000 + "s");
+            durationTextView.setText(filePath);
+            ImageView btnPlay = voice_card.findViewById(R.id.playImageView);
+            btnPlay.setId(View.generateViewId());
+
+            btnPlay.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mediaPlayer.isPlaying()) {
+                        mediaPlayer.stop();
+                        btnPlay.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.baseline_play_circle_outline_24));
+                    } else {
+                        mediaPlayer.start();
+                        btnPlay.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.stop_recording));
+                    }
+                }
+            });
+        } catch (Exception e) {
+            Log.e("CreateNoteActivity", "Error while adding voice to view: ");
+            mediaPlayer.release();
+            mediaPlayer = null;
+            return;
+        }
+
+        llVoice.addView(voice_card);
+    }
+
     private void addImagesToView(String[] listImages) {
         if (listImages != null) {
-            DisplayMetrics displayMetrics = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            int screenWidth = displayMetrics.widthPixels;
-            int screenHeight = displayMetrics.heightPixels;
-
-            int newWidth = (int) (screenWidth * 0.4);
-            int newHeight = (int) (screenHeight * 0.4);
-
             for (String image : listImages) {
-                // Tạo mới một LinearLayout ngang
-                LinearLayout llHorizontal = new LinearLayout(this);
-                llHorizontal.setOrientation(LinearLayout.HORIZONTAL);
-                llHorizontal.setId(View.generateViewId());
-                llHorizontal.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
+                ConstraintLayout image_card = (ConstraintLayout) getLayoutInflater().inflate(R.layout.image_card, null);
+                image_card.setId(View.generateViewId());
 
                 // Tạo mới một ImageView
-                ImageView ivImage = new ImageView(this);
-                ivImage.setId(View.generateViewId());
-                ivImage.setLayoutParams(new LinearLayout.LayoutParams(newWidth, newHeight));
-                Glide.with(this).load(image).centerCrop().into(ivImage);
+                try {
+                    ImageView ivImage = image_card.findViewById(R.id.imageView);
+                    ivImage.setId(View.generateViewId());
+                    Glide.with(this).load(image).centerCrop().into(ivImage);
 
-                // Thêm ImageView vào LinearLayout ngang
-                llHorizontal.addView(ivImage);
+                    TextView tvImageName = image_card.findViewById(R.id.textViewTitle);
+                    tvImageName.setId(View.generateViewId());
+                    tvImageName.setText("Image " + (llImages.getChildCount() + 1));
 
-                // Tạo mới một Button xóa
-                Button btnDelete = new Button(this);
-                btnDelete.setId(View.generateViewId());
-                btnDelete.setText("Xóa");
+                    // Tạo mới một Button xóa
+                    Button btnDelete = image_card.findViewById(R.id.btnRemoveImage);
+                    btnDelete.setId(View.generateViewId());
+                    btnDelete.setText("Xóa");
 
-                // Thêm sự kiện click cho Button xóa
-                btnDelete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Loại bỏ LinearLayout cha của Button
-                        llImages.removeView((View) v.getParent());
-                        mapImages.remove(((View) v.getParent()).getId());
-                    }
-                });
+                    btnDelete.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            llImages.removeView(image_card);
+                            mapImages.remove(v.getId());
+                        }
+                    });
 
-                // Thêm Button vào LinearLayout ngang
-                llHorizontal.addView(btnDelete);
+                    mapImages.put(btnDelete.getId(), image);
+                } catch (Exception e) {
+                    continue;
+                }
 
-                mapImages.put(llHorizontal.getId(), image);
-
-                // Thêm LinearLayout ngang vào LinearLayout cha
-                llImages.addView(llHorizontal);
+                llImages.addView(image_card);
             }
         }
 

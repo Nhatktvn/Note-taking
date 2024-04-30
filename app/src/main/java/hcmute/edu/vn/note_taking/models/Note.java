@@ -5,6 +5,8 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
+import hcmute.edu.vn.note_taking.sqlite.NoteTakingOpenHelper;
+
 public class Note {
     private long id;
     private String title;
@@ -94,6 +96,7 @@ public class Note {
                 ", created_at='" + created_at + '\'' +
                 '}';
     }
+
 
     public static Note fromCursor(Cursor cursor) {
         Note note = new Note();

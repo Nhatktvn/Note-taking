@@ -89,7 +89,7 @@ public class LoginFragment extends Fragment {
                     try {
                         if (response != null) {
                             if (response.getString("status").equals("success")) {
-                                sharedPreferences = requireActivity().getSharedPreferences(Constants.USER_SHARED_PREFERENCES, MODE_PRIVATE);
+                                sharedPreferences = requireContext().getSharedPreferences(Constants.USER_SHARED_PREFERENCES, MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString("email", email);
                                 editor.apply();

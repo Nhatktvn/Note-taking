@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Environment;
 import android.util.Base64;
 import android.util.Log;
 
@@ -22,6 +23,20 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class ImageUtils {
+
+    public static String saveBitmapToStorage(Context context, Bitmap bitmap) {
+        try {
+            String fileName = "image_" + System.currentTimeMillis() + ".jpg";
+            FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.close();
+
+            return fileName;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
     public static String encodeAndSaveImage(Context context, Uri imageUri) {

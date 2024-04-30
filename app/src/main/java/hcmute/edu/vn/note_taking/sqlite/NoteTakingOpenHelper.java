@@ -25,14 +25,26 @@ public class NoteTakingOpenHelper extends SQLiteOpenHelper {
                 "  list_image TEXT,\n" +
                 "  voice TEXT,\n" +
                 "  create_at DATETIME DEFAULT CURRENT_TIMESTAMP,\n" +
-                "  status INTEGER\n" +
+                "  status INTEGER,\n" +
+                "  parent_node_id INTEGER\n" +
                 ");\n");
+//        db.execSQL("CREATE TABLE nodes  (\n" +
+//                "  id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+//                "  name TEXT,\n" +
+//                "  parent_id INTEGER,\n" +
+//                "  sibling_id INTEGER,\n" +
+//                "  child_id INTEGER,\n" +
+//                "  create_at DATETIME DEFAULT CURRENT_TIMESTAMP,\n" +
+//                "  status INTEGER\n" +
+//                "  );\n");
+//        db.execSQL("INSERT INTO nodes (name, parent_id, sibling_id, child_id, status) VALUES ('Root', null, null, null, 1);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onCreate(db);
     }
+
 
     public Note insertNote(Note note) {
         try (SQLiteDatabase db = getWritableDatabase()) {
@@ -61,7 +73,8 @@ public class NoteTakingOpenHelper extends SQLiteOpenHelper {
                     "list_image",
                     "voice",
                     "create_at",
-                    "status",
+                    "status"
+//                    ,"parent_node_id"
             };
 
             String selection = "id = ?";
@@ -78,14 +91,7 @@ public class NoteTakingOpenHelper extends SQLiteOpenHelper {
             );
 
             if (cursor.moveToFirst()) {
-                note = new Note();
-                note.setId(cursor.getLong(cursor.getColumnIndexOrThrow("id")));
-                note.setTitle(cursor.getString(cursor.getColumnIndexOrThrow("title")));
-                note.setText_content(cursor.getString(cursor.getColumnIndexOrThrow("text_content")));
-                note.setListImages(cursor.getString(cursor.getColumnIndexOrThrow("list_image")));
-                note.setVoice(cursor.getString(cursor.getColumnIndexOrThrow("voice")));
-                note.setCreated_at(cursor.getString(cursor.getColumnIndexOrThrow("create_at")));
-                note.setStatus(cursor.getInt(cursor.getColumnIndexOrThrow("status")));
+                note = Note.fromCursor(cursor);
             }
             cursor.close();
         }
@@ -122,7 +128,7 @@ public class NoteTakingOpenHelper extends SQLiteOpenHelper {
 
     public List<Note> getAllNotes() {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM notes", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM notes order by id desc", null);
         List<Note> notes = Note.listFromCursor(cursor);
         cursor.close();
         db.close();

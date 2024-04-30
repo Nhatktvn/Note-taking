@@ -61,8 +61,8 @@ public class RegisterFragment extends Fragment {
         btn_submit_regist = view.findViewById(R.id.btn_submit_regist);
         tv_back_to_login = view.findViewById(R.id.tv_back_to_login);
 
-        userSharedPreferences = requireActivity().getSharedPreferences(Constants.USER_SHARED_PREFERENCES, MODE_PRIVATE);
-        settingsSharedPreferences = requireActivity().getSharedPreferences(Constants.SETIINGS_SHARED_PREFERENCES, MODE_PRIVATE);
+        userSharedPreferences = requireContext().getSharedPreferences(Constants.USER_SHARED_PREFERENCES, MODE_PRIVATE);
+        settingsSharedPreferences = requireContext().getSharedPreferences(Constants.SETTINGS_SHARED_PREFERENCES, MODE_PRIVATE);
 
         tv_back_to_login.setOnClickListener(v -> {
             Fragment fragment = new LoginFragment();

@@ -51,6 +51,18 @@
 				android:orientation="vertical">
 				
 				<EditText
+					android:id="@+id/et_new_password_otp"
+					android:layout_width="match_parent"
+					android:layout_height="55dp"
+					android:layout_marginHorizontal="20dp"
+					android:layout_marginTop="20dp"
+					android:background="@drawable/rounded_button_background"
+					android:backgroundTint="#FFEC85"
+					android:hint="Your new password..."
+					android:paddingHorizontal="15dp"
+					android:text="quoc123" />
+				
+				<EditText
 					android:id="@+id/et_code"
 					android:layout_width="match_parent"
 					android:layout_height="55dp"
@@ -68,18 +80,16 @@
 					
 					<TextView
 						android:id="@+id/tv_resend_code"
-						android:layout_width="wrap_content"
+						android:layout_width="match_parent"
 						android:layout_height="48dp"
 						android:layout_gravity="end"
 						android:layout_marginHorizontal="20dp"
 						android:layout_marginTop="20dp"
 						android:layout_weight="1"
-						android:clickable="true"
 						android:gravity="center"
 						android:text="@string/resend_otp_code"
-						android:textSize="16dp"
-						
-						android:textStyle="italic" />
+						android:textSize="16sp"
+						android:textStyle="bold" />
 				</LinearLayout>
 				
 				<TextView
@@ -90,13 +100,10 @@
 					android:layout_gravity="end"
 					android:layout_marginHorizontal="20dp"
 					android:layout_marginTop="20dp"
-					android:clickable="true"
 					android:gravity="center"
 					android:text="Go back to login?"
-					android:textSize="16dp"
-					android:textStyle="italic"
-					
-					/>
+					android:textSize="16sp"
+					android:textStyle="bold" />
 				
 				<LinearLayout
 					android:layout_width="match_parent"
@@ -117,7 +124,7 @@
 						android:backgroundTint="#FFA800"
 						android:text="Confirm OTP"
 						android:textColor="@color/black"
-						android:textSize="16dp" />
+						android:textSize="16sp" />
 				</LinearLayout>
 			</LinearLayout>
 		</LinearLayout>

@@ -38,6 +38,12 @@ android {
 }
 
 dependencies {
+
+    val cameraxVersion = "1.1.0-alpha05"
+    implementation("androidx.camera:camera-core:${cameraxVersion}")
+    implementation("androidx.camera:camera-camera2:${cameraxVersion}")
+    implementation("androidx.camera:camera-lifecycle:${cameraxVersion}")
+
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("androidx.databinding:databinding-runtime:8.3.2")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -45,6 +51,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.navigation:navigation-fragment:2.7.7")
     implementation("androidx.navigation:navigation-ui:2.7.7")
+    implementation("androidx.camera:camera-view:1.3.3")
+    implementation("androidx.camera:camera-core:1.3.3")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

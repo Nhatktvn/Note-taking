@@ -2,6 +2,8 @@ package hcmute.edu.vn.note_taking.utils;
 
 import android.content.Context;
 
+import androidx.fragment.app.FragmentActivity;
+
 public class PermissionUtils {
     public static boolean hasReadExternalStoragePermission(Context context) {
         return context.checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == android.content.pm.PackageManager.PERMISSION_GRANTED;

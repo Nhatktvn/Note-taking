@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import hcmute.edu.vn.note_taking.R;
 import hcmute.edu.vn.note_taking.activities.MainActivity;
@@ -35,6 +36,7 @@ public class OtpConfirmationFragment extends Fragment {
     TextView tv_back_to_login;
     Button btn_submit_OTP;
 
+    EditText et_new_password;
     SharedPreferences userSharedPreferences;
     String token = "";
     String email = null;
@@ -75,14 +77,18 @@ public class OtpConfirmationFragment extends Fragment {
         tv_resend_code = view.findViewById(R.id.tv_resend_code);
         tv_back_to_login = view.findViewById(R.id.tv_back_to_login);
         btn_submit_OTP = view.findViewById(R.id.btn_submit_OTP);
+        et_new_password = view.findViewById(R.id.et_new_password_otp);
 
-        userSharedPreferences = requireActivity().getSharedPreferences(Constants.USER_SHARED_PREFERENCES, MODE_PRIVATE);
+        userSharedPreferences = requireContext().getSharedPreferences(Constants.USER_SHARED_PREFERENCES, MODE_PRIVATE);
 
         new Thread(this::request_otp).start();
 
         email = userSharedPreferences.getString("email_otp", null);
 
-
+        String type = userSharedPreferences.getString("otp_type", null);
+        if (!Objects.equals(type, "reset_password")) {
+            et_new_password.setVisibility(View.GONE);
+        }
         if (email != null) {
 
             tv_resend_code.setOnClickListener(v -> new Thread(() -> {
@@ -123,9 +129,8 @@ public class OtpConfirmationFragment extends Fragment {
                 if (otp_code.length() == 6) {
                     new Thread(() -> {
                         try {
-                            String password = userSharedPreferences.getString("password", null);
+                            String password = et_new_password.getText().toString();
                             String username = userSharedPreferences.getString("username", null);
-                            String type = userSharedPreferences.getString("otp_type", null);
                             String urlString = Constants.getHOST() + "/auth/verify-otp";
 
                             Map<String, String> params = new HashMap<>();

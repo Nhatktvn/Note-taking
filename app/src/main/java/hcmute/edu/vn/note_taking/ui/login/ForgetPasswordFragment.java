@@ -19,7 +19,6 @@ import hcmute.edu.vn.note_taking.utils.Constants;
 
 public class ForgetPasswordFragment extends Fragment {
     EditText et_email;
-    EditText et_new_password;
     TextView tv_back_to_login;
     Button btn_submit_reset;
     SharedPreferences userSharedPreferences;
@@ -40,11 +39,10 @@ public class ForgetPasswordFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_forget_password, container, false);
 
         et_email = view.findViewById(R.id.et_email);
-        et_new_password = view.findViewById(R.id.et_new_password);
         tv_back_to_login = view.findViewById(R.id.tv_back_to_login);
         btn_submit_reset = view.findViewById(R.id.btn_submit_reset);
 
-        userSharedPreferences = requireActivity().getSharedPreferences(Constants.USER_SHARED_PREFERENCES, MODE_PRIVATE);
+        userSharedPreferences = requireContext().getSharedPreferences(Constants.USER_SHARED_PREFERENCES, MODE_PRIVATE);
 
         tv_back_to_login.setOnClickListener(v -> {
             Fragment loginFragment = new LoginFragment();
@@ -53,15 +51,9 @@ public class ForgetPasswordFragment extends Fragment {
 
         btn_submit_reset.setOnClickListener(v -> {
             String email = et_email.getText().toString();
-            String new_password = et_new_password.getText().toString();
             if (email.isEmpty()) {
                 et_email.setError("Email is required");
                 et_email.requestFocus();
-                return;
-            }
-            if (new_password.isEmpty()) {
-                et_new_password.setError("Password is required");
-                et_new_password.requestFocus();
                 return;
             }
 
@@ -71,7 +63,6 @@ public class ForgetPasswordFragment extends Fragment {
             editor.remove("password");
             editor.apply();
             editor.putString("email_otp", email);
-            editor.putString("password", new_password);
             editor.putString("otp_type", "reset_password");
             editor.apply();
 
